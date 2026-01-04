@@ -1,57 +1,113 @@
-
 import java.util.*;
 
 /**
- * The Main class implements the Bubble Sort algorithm. It allows users to input
- * the size of an array and the array values, sorts the array using Bubble Sort,
- * and displays the sorting steps.
+ * The Main class implements the Bubble Sort algorithm.
+ * It allows users to input the size of an array and the array values,
+ * sorts the array using Bubble Sort, and displays the sorting steps.
  *
  * @author ADMIN
  */
 public class Main {
 
-   /**
+    /**
      * The main method is the entry point of the application.
-     * 
-     * Input format:
-     * - Line 1: Size of array (positive integer)
-     * - Line 2: Array values separated by space
+     * It orchestrates the flow of the program: input, creation, display, sorting,
+     * and final display.
      * 
      * @param args command line arguments (not used)
      */
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        // Step 1: User enters the size of the array
-        int size = sc.nextInt();
+        // Step 1: User enters a positive decimal number for array size
+        int sizeArray = inputSizeOfArray();
 
-        // Step 2: Create array with user input values
-        int[] array = createArray(size, sc);
+        // Step 2: Create array with input values (for Monaco IDE compatibility)
+        int[] array = createArray(sizeArray);
 
-        // Step 3: Sort the array using Bubble sort algorithm (with debug display)
+        // Step 3: Display the array before sorting
+        displayArrayUnsorted(array);
+
+        // Step 4: Sort the array using Bubble sort algorithm
         bubbleSort(array);
 
-        // Step 4: Display the final sorted array
-        System.out.print("Sorted array: ");
-        displayArray(array);
+        // Step 5: Display the array after it has been sorted
+        displayArraySorted(array);
+    }
+
+    // ==================== SCANNER INSTANCE ====================
+    private static Scanner sc = new Scanner(System.in);
+
+    /**
+     * Prompts the user to input a positive integer for the size of the array.
+     * Validates the input to ensure it is a non-empty, positive integer.
+     * 
+     * Note: For Monaco IDE, input is pre-provided and always valid.
+     * This function is kept for completeness and real-world usage.
+     * 
+     * @return the validated integer size of the array
+     */
+    private static int inputSizeOfArray() {
+        double sizeArray;
+        String input;
+
+        // Loop until valid input is received
+        while (true) {
+            input = sc.nextLine().trim();
+
+            // 1. Check if input is empty
+            if (input.isEmpty()) {
+                System.out.println("Input is empty. Please enter again.");
+                continue;
+            }
+
+            try {
+                // 2. Parse input to a double first to check for decimals
+                sizeArray = Double.parseDouble(input);
+
+                // 3. Check if input is a real number (not an integer)
+                if (sizeArray != (int) sizeArray) {
+                    System.out.println("Input is not a whole number. Please enter again.");
+                    continue;
+                }
+
+                // 4. Check if input is negative
+                if (sizeArray < 0) {
+                    System.out.println("Input is a negative number. Please enter again.");
+                    continue;
+                }
+
+                // 5. Check if input is zero
+                if (sizeArray == 0) {
+                    System.out.println("Input must be greater than zero. Please enter again.");
+                    continue;
+                }
+
+                // Input is valid, break the loop
+                break;
+
+            } catch (NumberFormatException e) {
+                System.out.println("Input is not a valid number. Please enter again.");
+            }
+        }
+        return (int) sizeArray;
     }
 
     /**
      * Creates an array of the specified size and reads values from user input.
      * 
-     * @param size the size of the array to create
-     * @param sc   the Scanner object for input
+     * @param sizeArray the size of the array to create
      * @return an array filled with user input values
      */
-    private static int[] createArray(int size, Scanner sc) {
-        int[] array = new int[size];
-        for (int i = 0; i < size; i++) {
+    private static int[] createArray(int sizeArray) {
+        int[] array = new int[sizeArray];
+        // Read array values from input (Monaco IDE compatible)
+        for (int i = 0; i < sizeArray; i++) {
             array[i] = sc.nextInt();
         }
         return array;
     }
 
     /**
-     * Displays the elements of the array in format: [e1, e2, e3]
+     * Displays the elements of the array in format: [e1, e2, ..., en].
      * 
      * @param array the array to display
      */
@@ -68,18 +124,13 @@ public class Main {
     }
 
     /**
-     * Sorts the given array using the Bubble Sort algorithm with optimization.
-     * Uses a swapped flag to detect if array is already sorted and break early.
-     * Displays each comparison step during sorting.
+     * Sorts the given array using the Bubble Sort algorithm.
+     * Displays the state of the array after each swap or comparison step.
      * 
      * @param array the array to sort
      */
     private static void bubbleSort(int[] array) {
         boolean swapped;
-
-        // Display "unsorted" at the beginning
-        displayArray(array);
-        System.out.println("\tunsorted");
 
         // Outer loop: after each iteration, one element is sorted at the end
         for (int i = 0; i < array.length; i++) {
@@ -117,4 +168,23 @@ public class Main {
         System.out.println("\tsorted");
     }
 
+    /**
+     * Helper method to display the array with a "Unsorted array: " prefix.
+     * 
+     * @param array the array to display
+     */
+    private static void displayArrayUnsorted(int[] array) {
+        displayArray(array);
+        System.out.println("\tunsorted");
+    }
+
+    /**
+     * Helper method to display the array with a "Sorted array: " prefix.
+     * 
+     * @param array the array to display
+     */
+    private static void displayArraySorted(int[] array) {
+        System.out.print("Sorted array: ");
+        displayArray(array);
+    }
 }

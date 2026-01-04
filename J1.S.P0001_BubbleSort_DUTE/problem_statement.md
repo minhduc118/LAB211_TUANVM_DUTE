@@ -1,35 +1,23 @@
 # Bubble Sort Algorithm
 
 ## 🎯 Mục tiêu
-- Đọc dữ liệu từ input
-- Sử dụng kiểu dữ liệu mảng số nguyên
-- Thực hiện thuật toán Bubble Sort trong Java
-- Hiển thị quá trình sắp xếp và kết quả đúng định dạng
-
-## 📝 Đề bài
-
-Viết chương trình Java cho phép người dùng nhập kích thước mảng và các giá trị của mảng. Sau đó sắp xếp mảng theo thứ tự tăng dần sử dụng thuật toán **Bubble Sort** và hiển thị các bước sắp xếp chi tiết.
+- Đọc dữ liệu từ input (System.in)
+- Sử dụng mảng số nguyên
+- Thực hiện thuật toán Bubble Sort
+- Hiển thị quá trình sắp xếp đúng định dạng
 
 ## 📥 Yêu cầu
-
 **Input:**
 - Dòng 1: Số nguyên dương `n` - kích thước mảng
-- Dòng 2: `n` số nguyên cách nhau bởi dấu cách - các phần tử của mảng
+- Dòng 2: `n` số nguyên cách nhau bởi dấu cách
 
 **Output:**
-- Dòng 1: `[mảng ban đầu]` + tab + `unsorted`
-- Các dòng tiếp theo: `[mảng hiện tại]` + tab + `X > Y, swap` hoặc `X < Y, ok`
-- Dòng kế cuối: `[mảng đã sắp xếp]` + tab + `sorted`
-- Dòng cuối: `Sorted array: [mảng đã sắp xếp]`
-
-## 💡 Thuật toán Bubble Sort
-
-1. So sánh từng cặp phần tử liền kề từ đầu mảng
-2. Nếu phần tử trước lớn hơn phần tử sau → hoán đổi (swap)
-3. Lặp lại cho đến khi không còn hoán đổi nào
+- `[mảng]` + tab + `unsorted`
+- `[mảng]` + tab + `X > Y, swap` hoặc `X < Y, ok`
+- `[mảng]` + tab + `sorted`
+- `Sorted array: [mảng đã sắp xếp]`
 
 ## 📌 Ví dụ
-
 **Input:**
 ```
 5
@@ -53,20 +41,39 @@ Viết chương trình Java cho phép người dùng nhập kích thước mản
 Sorted array: [-5, 1, 5, 12, 16]
 ```
 
-## 🔧 Starter Code
+## 💡 Thuật toán
+1. So sánh từng cặp phần tử liền kề
+2. Nếu phần tử trước > phần tử sau → swap
+3. Lặp lại cho đến khi không còn swap
 
+## 🔧 Starter Code
 ```java
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        // Step 1: Input size of array
+        Scanner sc = new Scanner(System.in);
         
-        // Step 2: Create array with input values
+        // 1. Đọc size và tạo mảng
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
         
-        // Step 3: Sort array using Bubble Sort
+        // 2. Bubble Sort với hiển thị từng bước
+        // TODO: Implement here
         
-        // Step 4: Display sorted array
+        // 3. In kết quả cuối cùng
+        // System.out.print("Sorted array: ");
     }
 }
 ```
+
+## ⚠️ Lưu ý Monaco IDE
+| Lưu ý | Chi tiết |
+|-------|----------|
+| **Input** | Không có console tương tác - input được cung cấp sẵn |
+| **Output** | So khớp chính xác - chú ý tab (`\t`) và khoảng trắng |
+| **Class** | Phải tên `Main` với method `main(String[] args)` |
+| **Package** | Không sử dụng `package` statement |
