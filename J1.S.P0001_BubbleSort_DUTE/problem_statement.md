@@ -54,18 +54,18 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         
-        // 1. Đọc size và tạo mảng
-        int n = sc.nextInt();
-        int[] arr = new int[n];
-        for (int i = 0; i < n; i++) {
-            arr[i] = sc.nextInt();
-        }
+        // Step 1: Đọc kích thước mảng (n)
         
-        // 2. Bubble Sort với hiển thị từng bước
-        // TODO: Implement here
+        // Step 2: Tạo mảng và đọc các phần tử
         
-        // 3. In kết quả cuối cùng
-        // System.out.print("Sorted array: ");
+        // Step 3: In trạng thái ban đầu "[mảng]\tunsorted"
+        
+        // Step 4: Thực hiện Bubble Sort với hiển thị từng bước so sánh
+        
+        // Step 5: In trạng thái cuối "[mảng]\tsorted"
+        
+        // Step 6: In kết quả "Sorted array: [mảng]"
+        
     }
 }
 ```
